@@ -4,7 +4,7 @@ using namespace std;
 
 int obtenerMayor(int* num, int tamanio) {
   int mayor = 0;
-  for (size_t i = 1; i < tamanio; i++)
+  for (int i = 1; i < tamanio; i++)
   {
     if (num[mayor] < num[i])
     {
@@ -38,15 +38,17 @@ void recorreArreglo(int* num, int posicion, int tamanio) {
 int main() {
   int num[] = {8, 1, 2, 9, 4, 3, 7, 5};
   int tamanio = sizeof(num) / sizeof(int);
-  bool turnoMayor = true;
+  bool determinarMayor = true;
+
 
   while (tamanio > 1)
   {
-    int posicionARecorrer = turnoMayor ? obtenerMayor(num, tamanio) : obtenerMenor(num, tamanio);
-    recorreArreglo(num, posicionARecorrer, tamanio);
-    turnoMayor = !turnoMayor;
+    int posicionAEliminar = determinarMayor ? obtenerMayor(num, tamanio) : obtenerMenor(num, tamanio);
+    recorreArreglo(num, posicionAEliminar, tamanio);
     tamanio--;
+    determinarMayor = !determinarMayor;
   }
 
-  cout << "Restante: " << num[0];
+  cout << "Restante: " << num[4];
+  
 }
